@@ -1,0 +1,42 @@
+[project]
+name = "spend-tracker"
+version = "0.1.0"
+description = "Add your description here"
+readme = "../README.md"
+authors = [
+    { name = "GokulAjithV", email = "gokulvasu225@gmail.com" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.141.1",
+    "sqlalchemy>=2.0.54",
+    "tzdata>=2026.4",
+    "uvicorn[standard]>=0.53.0",
+]
+
+[tool.uv]
+# The app is run with uvicorn, not installed as a library, so there is nothing
+# to build. This keeps `app/` at the project root as the import root.
+package = false
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28.1",
+    "pytest>=9.1.1",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+# Import roots are stated explicitly rather than inferred from layout, so every
+# checker resolves `app.*` the same way regardless of its own conventions.
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
+include = ["app", "tests"]
+extraPaths = ["."]
+
+[tool.ty.environment]
+python = ".venv"
+root = ["."]
+extra-paths = ["."]

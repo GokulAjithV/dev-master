@@ -1,0 +1,15 @@
+# claude
+CLAUDE.md
+
+# Secrets
+core/.env
+
+# Python
+core/venv/
+core/__pycache__/
+core/*.pyc
+
+# Editors / OS
+.vscode/
+.idea/
+Thumbs.db
