@@ -1,4 +1,4 @@
-# Langgraph = steps (nodes) + shared state + rules for what runs next (edges)
+# Langgraph = steps (nodes) + shared state + rules for what runs next (edges and conditional edges)
 from typing import TypedDict
 
 from langgraph.graph import END, START, StateGraph
