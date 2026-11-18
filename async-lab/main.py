@@ -16,7 +16,8 @@ def log(msg):
 async def health():
     return {"status": "alive"}
 
-# 1. async def + non-blocking wait
+# 1. async def + non-blocking wait - runs with event loop (only 1 main thread)
+# Concurrency happens
 @app.get("/async-good")
 async def async_good(i: int = 0):
     log(f"start {i}")
@@ -24,7 +25,8 @@ async def async_good(i: int = 0):
     log(f"end {i}")
     return {"i": i}
 
-# 2. def + blocking wait
+# 2. def + blocking wait - runs with thread pool (bunch of threads (default 40), each runs a req)
+# Concurrency happens - the 41st req waits in queue
 @app.get("/sync-ok")
 def sync_ok(i: int = 0):
     log(f"start {i}")
